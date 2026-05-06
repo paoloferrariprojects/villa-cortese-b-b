@@ -336,7 +336,7 @@ function Location({ lang }) {
           <div className="location__map reveal-img">
             <iframe
               title="Map"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=9.9420%2C45.8870%2C9.9580%2C45.8980&layer=mapnik&marker=45.8929%2C9.9499"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=9.9395%2C45.8805%2C9.9535%2C45.8945&layer=mapnik&marker=45.887444%2C9.946493"
               style={{ width: "100%", height: "100%", border: 0, filter: "grayscale(0.6) sepia(0.15) contrast(0.95)" }}
               loading="lazy"
             ></iframe>
@@ -632,12 +632,19 @@ function Reviews({ lang }) {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "var(--gap-l)", marginBottom: "var(--gap-l)" }}>
           <div className="reveal">
             <div className="eyebrow" style={{ marginBottom: 16 }}>{t.eyebrow}</div>
+            <p className="lede">{t.lede}</p>
           </div>
-          <div className="reveal">
-            <p className="lede">
-              <span style={{ color: "var(--accent)", fontStyle: "normal", fontWeight: 400, marginRight: 12 }}>4,9 / 5,0</span>
-              {lang === "it" ? "su Google, da" : "on Google, from"} <em>40+</em> {lang === "it" ? "ospiti" : "guests"}.
-            </p>
+          <div className="reveal review-scores">
+            {t.scores.map((s, i) => (
+              <div className="review-score" key={i}>
+                <div className="review-score__num">
+                  <span className="review-score__value">{s.value}</span>
+                  <span className="review-score__scale">{s.scale}</span>
+                </div>
+                <div className="review-score__platform">{s.platform}</div>
+                <div className="review-score__count">{s.count}</div>
+              </div>
+            ))}
           </div>
         </div>
         <div className="reviews reveal stagger">
@@ -645,7 +652,7 @@ function Reviews({ lang }) {
             <div className="review" key={i}>
               <p className="review__quote">{rv.quote}</p>
               <div className="review__author">
-                <span>{rv.author} · {rv.date}</span>
+                <span>{rv.author} · {rv.date}{rv.source ? ` · ${rv.source}` : ""}</span>
                 <span className="stars">{rv.stars}</span>
               </div>
             </div>

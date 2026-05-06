@@ -318,7 +318,7 @@ function MLocation({ lang }) {
         <div className="m-location__map reveal-img">
           <iframe
             title="Map"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=9.9420%2C45.8870%2C9.9580%2C45.8980&layer=mapnik&marker=45.8929%2C9.9499"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=9.9395%2C45.8805%2C9.9535%2C45.8945&layer=mapnik&marker=45.887444%2C9.946493"
             loading="lazy"
           />
         </div>
@@ -540,17 +540,26 @@ function MReviews({ lang }) {
         <h2 className="h-section">{t.title_a}<br /><em>{t.title_b}</em></h2>
       </div>
       <div className="px reveal" style={{ marginBottom:24 }}>
-        <p className="lede">
-          <span style={{ color:"var(--accent)", fontWeight:400, marginRight:10 }}>4,9 / 5,0</span>
-          <em>40+</em> {lang === "it" ? "ospiti su Google" : "guests on Google"}.
-        </p>
+        <p className="lede" style={{ marginBottom: 16 }}>{t.lede}</p>
+        <div className="m-review-scores">
+          {t.scores.map((s, i) => (
+            <div className="m-review-score" key={i}>
+              <div className="m-review-score__num">
+                <span className="m-review-score__value">{s.value}</span>
+                <span className="m-review-score__scale">{s.scale}</span>
+              </div>
+              <div className="m-review-score__platform">{s.platform}</div>
+              <div className="m-review-score__count">{s.count}</div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="m-reviews reveal stagger">
         {r.map((rv, i) => (
           <div className="m-review" key={i}>
             <p className="m-review__quote">{rv.quote}</p>
             <div className="m-review__author">
-              <span>{rv.author} · {rv.date}</span>
+              <span>{rv.author} · {rv.date}{rv.source ? ` · ${rv.source}` : ""}</span>
               <span className="m-review__stars">{rv.stars}</span>
             </div>
           </div>

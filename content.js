@@ -195,6 +195,11 @@ window.VC_I18N = {
       eyebrow: "Le voci degli ospiti",
       title_a: "Ciò che dicono",
       title_b: "di noi.",
+      lede: "Le recensioni parlano da sole. Ringraziamo ogni ospite per le parole gentili.",
+      scores: [
+        { value: "9,8", scale: "/ 10", platform: "Booking", count: "28 recensioni verificate" },
+        { value: "5,0", scale: "★★★★★", platform: "Google", count: "31 recensioni" },
+      ],
     },
     booking: {
       num: "VIII.",
@@ -368,7 +373,14 @@ window.VC_I18N = {
       sent_title: "Enquiry sent.",
       sent_sub: "Carlotta will reply within 24 hours with availability and dedicated rates.",
     },
-    reviews: { num: "VII.", eyebrow: "Guest voices", title_a: "What guests", title_b: "are saying." },
+    reviews: {
+      num: "VII.", eyebrow: "Guest voices", title_a: "What guests", title_b: "are saying.",
+      lede: "Reviews speak for themselves. Thank you to every guest for the kind words.",
+      scores: [
+        { value: "9.8", scale: "/ 10", platform: "Booking", count: "28 verified reviews" },
+        { value: "5.0", scale: "★★★★★", platform: "Google", count: "31 reviews" },
+      ],
+    },
     booking: {
       num: "VIII.", eyebrow: "Availability request", title_a: "A personal", title_b: "enquiry.",
       lede: "Not a portal, not an algorithm. Write to Carlotta — she'll reply within 24 hours with availability, rates and tailored suggestions.",
@@ -388,7 +400,10 @@ window.VC_I18N = {
 };
 
 window.VC_REVIEWS = [
-  { quote: "Struttura moolto bella, dentro e fuori, curata nei minimi dettagli. La colazione è varia ed abbondante, con prodotti fatti in casa e di qualità.", author: "Nadia", date: "Gen 2026", stars: "★★★★★" },
-  { quote: "Eccellente. Ristrutturata con cura per ogni singolo dettaglio. L'accoglienza è stata cortese e calorosa.", author: "Francesco A.", date: "Gen 2026", stars: "★★★★★" },
-  { quote: "Amazing location for both culture and nature aficionados. With the Orobic Alps at your doorstep, Villa Cortese serves whatever holiday you have in mind.", author: "Oscar J. Poiesz", date: "Dic 2024", stars: "★★★★★" },
+  { quote: "Struttura molto bella, dentro e fuori, curata nei minimi dettagli. La colazione è varia ed abbondante, con prodotti fatti in casa e di qualità.", author: "Nadia", date: "Gen 2026", stars: "★★★★★", source: "Google" },
+  { quote: "Eccellente. Ristrutturata con cura per ogni singolo dettaglio. L'accoglienza è stata cortese e calorosa.", author: "Francesco A.", date: "Gen 2026", stars: "★★★★★", source: "Google" },
+  { quote: "Bellissima villa storica, interni nuovi ed eleganti, pulizia eccellente, parcheggio comodo. Un soggiorno perfetto.", author: "Iolanda", date: "Dic 2025", stars: "10/10", source: "Booking" },
+  { quote: "Posto molto silenzioso, camera impeccabile, letto comodo, proprietari gentili e torte fatte in casa a colazione.", author: "Militaru", date: "Mag 2026", stars: "10/10", source: "Booking" },
+  { quote: "Exceptional hospitality. Secure bike storage with charging, perfect breakfast, welcoming atmosphere. Carlotta and her family go above and beyond.", author: "Christian", date: "Aug 2025", stars: "10/10", source: "Booking" },
+  { quote: "Amazing location for both culture and nature aficionados. With the Orobic Alps at your doorstep, Villa Cortese serves whatever holiday you have in mind.", author: "Oscar J. Poiesz", date: "Dic 2024", stars: "★★★★★", source: "Google" },
 ];

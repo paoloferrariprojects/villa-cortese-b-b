@@ -29,7 +29,7 @@ const VCMark = () => (
   <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
     <circle cx="30" cy="30" r="28.5" stroke="currentColor" strokeWidth="1" />
     <path d="M16 18 L26 42 L30 32 L34 42 L44 18" stroke="currentColor" strokeWidth="1.2" fill="none" />
-    <text x="30" y="55" textAnchor="middle" fill="currentColor" fontSize="6" fontFamily="Cormorant Garamond" fontStyle="italic">mcmxxx</text>
+    <text x="30" y="55" textAnchor="middle" fill="currentColor" fontSize="7" fontFamily="Cormorant Garamond" fontStyle="italic">1930</text>
   </svg>
 );
 
@@ -132,7 +132,7 @@ function Welcome({ lang }) {
         <div className="section__head reveal">
           <div className="num">{t.num}</div>
           <h2 className="h-section title">
-            {t.title_a}<br /><em>{t.title_b}</em><br />{t.title_c}<br /><em>{t.title_d}</em>
+            {t.title_a} <em>{t.title_b}</em> {t.title_c} <em>{t.title_d}</em>
           </h2>
         </div>
         <div className="intro-grid">
@@ -155,7 +155,7 @@ function Welcome({ lang }) {
         <div className="facts reveal stagger">
           {facts.map((f, i) => (
             <div className="facts__cell" key={i}>
-              <span className="facts__num">{f.num.includes("v") || f.num.includes("i") ? <em>{f.num}</em> : f.num}</span>
+              <span className="facts__num">{f.num}</span>
               <span className="facts__label">{f.label}</span>
             </div>
           ))}
@@ -242,7 +242,7 @@ function Breakfast({ lang }) {
         <div className="section__head reveal">
           <div className="num">{t.num}</div>
           <h2 className="h-section title">
-            {t.title_a}<br /><em>{t.title_b}</em>
+            {t.title_a} <em>{t.title_b}</em>
           </h2>
         </div>
         <div className="intro-grid">
@@ -275,7 +275,7 @@ function Story({ lang }) {
         <div className="section__head reveal">
           <div className="num">{t.num}</div>
           <h2 className="h-section title">
-            {t.title_a}<br /><em>{t.title_b}</em><br />{t.title_c}
+            {t.title_a} <em>{t.title_b}</em> {t.title_c}
           </h2>
         </div>
         <div className="story">
@@ -309,7 +309,7 @@ function Location({ lang }) {
       <div className="shell">
         <div className="section__head reveal">
           <div className="num">{t.num}</div>
-          <h2 className="h-section title">{t.title_a}<br /><em>{t.title_b}</em></h2>
+          <h2 className="h-section title">{t.title_a} <em>{t.title_b}</em></h2>
         </div>
         <div className="location">
           <div>
@@ -349,7 +349,7 @@ function Outdoor({ lang }) {
       <div className="shell">
         <div className="section__head reveal">
           <div className="num">{t.num}</div>
-          <h2 className="h-section title">{t.title_a}<br /><em>{t.title_b}</em></h2>
+          <h2 className="h-section title">{t.title_a} <em>{t.title_b}</em></h2>
         </div>
         <div className="intro-grid" style={{ marginBottom: "var(--gap-l)" }}>
           <div></div>
@@ -619,7 +619,7 @@ function Reviews({ lang }) {
       <div className="shell">
         <div className="section__head reveal">
           <div className="num">{t.num}</div>
-          <h2 className="h-section title">{t.title_a}<br /><em>{t.title_b}</em></h2>
+          <h2 className="h-section title">{t.title_a} <em>{t.title_b}</em></h2>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "var(--gap-l)", marginBottom: "var(--gap-l)" }}>
           <div className="reveal">
@@ -656,7 +656,7 @@ function BookingBand({ lang, onBook, formState, setFormState }) {
       <div className="shell">
         <div className="section__head reveal">
           <div className="num">{t.num}</div>
-          <h2 className="h-section title">{t.title_a}<br /><em>{t.title_b}</em></h2>
+          <h2 className="h-section title">{t.title_a} <em>{t.title_b}</em></h2>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "var(--gap-l)" }}>
           <div className="reveal">
@@ -819,7 +819,7 @@ function Contact({ lang }) {
       <div className="shell">
         <div className="section__head reveal">
           <div className="num">{t.num}</div>
-          <h2 className="h-section title">{t.title_a}<br /><em>{t.title_b}</em></h2>
+          <h2 className="h-section title">{t.title_a} <em>{t.title_b}</em></h2>
         </div>
         <div className="contact-grid reveal stagger">
           <div className="contact-card">
@@ -883,7 +883,7 @@ function Footer({ lang }) {
             </ul>
           </div>
         </div>
-        <div className="footer__wordmark">Villa Cortese · mcmxxx</div>
+        <div className="footer__wordmark">Villa Cortese · 1930</div>
         <div className="footer__bottom">
           <span>{t.copy}</span>
           <span>{t.credit}</span>

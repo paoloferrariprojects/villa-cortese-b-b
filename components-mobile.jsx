@@ -24,7 +24,7 @@ const VCMarkM = () => (
   <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
     <circle cx="30" cy="30" r="28.5" stroke="currentColor" strokeWidth="1" />
     <path d="M16 18 L26 42 L30 32 L34 42 L44 18" stroke="currentColor" strokeWidth="1.2" fill="none" />
-    <text x="30" y="55" textAnchor="middle" fill="currentColor" fontSize="6" fontFamily="Cormorant Garamond" fontStyle="italic">mcmxxx</text>
+    <text x="30" y="55" textAnchor="middle" fill="currentColor" fontSize="7" fontFamily="Cormorant Garamond" fontStyle="italic">1930</text>
   </svg>
 );
 
@@ -152,7 +152,7 @@ function MWelcome({ lang }) {
       <div className="m-facts reveal stagger" style={{ marginTop:32 }}>
         {f.map((fc, i) => (
           <div className="m-facts__cell" key={i}>
-            <span className="m-facts__num">{/^(i|v)/.test(fc.num) ? <em>{fc.num}</em> : fc.num}</span>
+            <span className="m-facts__num">{fc.num}</span>
             <span className="m-facts__label">{fc.label}</span>
           </div>
         ))}
@@ -687,7 +687,7 @@ function MFooter({ lang }) {
           <ul><li>{t.cir}</li><li>{t.cin}</li></ul>
         </div>
       </div>
-      <div className="m-footer__wordmark reveal">Villa Cortese · mcmxxx</div>
+      <div className="m-footer__wordmark reveal">Villa Cortese · 1930</div>
       <div className="m-footer__bottom reveal">
         <span>{t.copy}</span>
         <span>{t.credit}</span>

@@ -3,11 +3,15 @@
 
 const { useEffect, useRef, useState, useCallback, useMemo } = React;
 
-// === Reveal hook (IntersectionObserver-based scroll reveal) ===
+// === Reveal hook (IntersectionObserver-based scroll reveal, with fallback) ===
 function useReveal() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal, .reveal-img, .stagger");
     if (!els.length) return;
+    if (typeof IntersectionObserver === "undefined") {
+      els.forEach((el) => el.classList.add("is-in"));
+      return;
+    }
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -20,7 +24,11 @@ function useReveal() {
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
     els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+    const fallback = setTimeout(() => {
+      document.querySelectorAll(".reveal:not(.is-in), .reveal-img:not(.is-in), .stagger:not(.is-in)")
+        .forEach((el) => el.classList.add("is-in"));
+    }, 2500);
+    return () => { io.disconnect(); clearTimeout(fallback); };
   });
 }
 

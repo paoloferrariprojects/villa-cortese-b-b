@@ -1,25 +1,26 @@
 // Villa Cortese — content + i18n
-// Photo URLs are pulled from the original WordPress site (real photos).
+// Local images live under /images. Slots not yet replaced fall back to the
+// original WordPress URLs so every spot still renders.
 window.VC_PHOTOS = {
-  hero: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/cropped-cropped-1-scaled-1-scaled.jpg",
-  exterior: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/cropped-IMG_8624-1024x615.jpg",
+  hero: "images/hero.jpg",
+  exterior: "images/welcome.jpg",
   garden: "https://www.villacorteseclusone.it/wp-content/uploads/2026/01/Esterni_iris-768x1024.jpg",
   basilica: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/Basilica-2.jpg",
   outdoor: "https://www.villacorteseclusone.it/wp-content/uploads/2024/03/IMG_7350.jpg",
-  living: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/IMG_0462.jpg",
+  living: "images/breakfast/breakfast_4.jpg",
   living2: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/IMG_0456-1-768x1024.jpg",
-  doppiaNord: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/Camera_Nord_new-1-768x1024.jpg",
+  doppiaNord: "images/rooms/cortese.jpg",
   doppiaNord2: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/Doppia_Nord_2-1-768x1024.jpg",
   doppiaNord3: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/Doppia_Nord_3-768x1024.jpg",
   doppiaNordBath: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/Doppia_Nord_B-768x1024.jpg",
   bagno: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/IMG_8640-768x1024.jpg",
-  triplaDeluxe: "https://www.villacorteseclusone.it/wp-content/uploads/2024/03/IMG_1696-768x1024.jpg",
+  triplaDeluxe: "images/rooms/iris.jpg",
   triplaDeluxe2: "https://www.villacorteseclusone.it/wp-content/uploads/2026/01/Tripla_new1-768x1024.jpg",
-  doppiaSud: "https://www.villacorteseclusone.it/wp-content/uploads/2026/01/Sud_estate-768x1024.jpg",
-  colazione1: "https://www.villacorteseclusone.it/wp-content/uploads/2024/10/Torta-edited-scaled.jpg",
-  colazione2: "https://www.villacorteseclusone.it/wp-content/uploads/2024/03/IG_colaz-1-576x1024.jpg",
-  colazione3: "https://www.villacorteseclusone.it/wp-content/uploads/2024/10/ColazioneNew_6-768x1024.jpg",
-  colazione4: "https://www.villacorteseclusone.it/wp-content/uploads/2024/10/ColazioneNew_5-edited-scaled.jpg",
+  doppiaSud: "images/rooms/pizzo.jpg",
+  colazione1: "images/breakfast/breakfast_hero.jpg",
+  colazione2: "images/breakfast/breakfast_1.jpg",
+  colazione3: "images/breakfast/breakfast_2.jpg",
+  colazione4: "images/breakfast/breakfast_3.jpg",
   bagno2: "https://www.villacorteseclusone.it/wp-content/uploads/2024/01/IMG_9761.jpg",
 };
 

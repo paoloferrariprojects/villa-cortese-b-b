@@ -421,25 +421,34 @@ button { font:inherit; color:inherit; background:none; border:none; cursor:point
   color:var(--muted);
 }
 
-/* ── Rooms carousel ── */
+/* ── Rooms carousel (iOS-style centered snap) ── */
 .m-rooms-scroll {
   display:flex;
-  gap:var(--gap-s);
+  gap:16px;
   overflow-x:auto;
-  padding:0 var(--px) var(--gap-m);
+  padding:8px 11vw var(--gap-m);
   scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
+  overscroll-behavior-x:contain;
 }
 .m-rooms-scroll::-webkit-scrollbar { display:none; }
 .m-room-card {
-  flex-shrink:0;
-  width:calc(100vw - 60px);
-  max-width:340px;
-  scroll-snap-align:start;
+  flex:0 0 78vw;
+  max-width:380px;
+  scroll-snap-align:center;
+  scroll-snap-stop:always;
   display:flex;
   flex-direction:column;
   gap:14px;
+  opacity:.5;
+  transform:scale(.94);
+  transition:opacity .35s ease, transform .35s ease;
+  cursor:pointer;
+}
+.m-room-card.is-active {
+  opacity:1;
+  transform:scale(1);
 }
 .m-room-card__img {
   position:relative;

@@ -188,13 +188,31 @@ function MRooms({ lang }) {
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+    const cards = () => el.querySelectorAll(".m-room-card");
     const onScroll = () => {
-      const idx = Math.round(el.scrollLeft / el.clientWidth * (t.list.length));
-      setActive(Math.min(idx, t.list.length - 1));
+      const center = el.scrollLeft + el.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      cards().forEach((c, i) => {
+        const cardCenter = c.offsetLeft + c.offsetWidth / 2;
+        const dist = Math.abs(cardCenter - center);
+        if (dist < bestDist) { bestDist = dist; best = i; }
+      });
+      setActive(best);
     };
+    onScroll();
     el.addEventListener("scroll", onScroll, { passive: true });
     return () => el.removeEventListener("scroll", onScroll);
   }, [t.list.length]);
+
+  const scrollToCard = (i) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const card = el.querySelectorAll(".m-room-card")[i];
+    if (!card) return;
+    const target = card.offsetLeft + card.offsetWidth / 2 - el.clientWidth / 2;
+    el.scrollTo({ left: target, behavior: "smooth" });
+  };
 
   return (
     <section className="m-section m-section--alt" id="rooms">
@@ -209,7 +227,7 @@ function MRooms({ lang }) {
 
       <div className="m-rooms-scroll reveal" ref={scrollRef}>
         {t.list.map((r, i) => (
-          <div className="m-room-card" key={i}>
+          <div className={`m-room-card ${active === i ? "is-active" : ""}`} key={i} onClick={() => scrollToCard(i)}>
             <div className="m-room-card__img">
               <img src={imgs[i]} alt={r.type} />
               <div className="m-room-card__num">— 0{i+1} —</div>
@@ -230,10 +248,7 @@ function MRooms({ lang }) {
           <button
             key={i}
             className={active === i ? "active" : ""}
-            onClick={() => {
-              const el = scrollRef.current;
-              if (el) el.scrollTo({ left: i * (el.clientWidth - 40), behavior: "smooth" });
-            }}
+            onClick={() => scrollToCard(i)}
             aria-label={`Room ${i+1}`}
           />
         ))}

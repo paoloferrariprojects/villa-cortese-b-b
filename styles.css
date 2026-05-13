@@ -210,6 +210,15 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease, padding 0.35s ease;
+}
+.nav.is-scrolled {
+  mix-blend-mode: normal;
+  background: rgba(20, 18, 14, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 .nav__brand {
   font-family: var(--serif);
@@ -276,7 +285,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .cta-book {
   border: 1px solid currentColor;
-  padding: 8px 16px;
+  padding: 10px 22px;
   border-radius: 999px;
   letter-spacing: 0.18em;
 }

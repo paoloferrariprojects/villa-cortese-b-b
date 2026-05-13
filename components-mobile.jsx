@@ -39,6 +39,7 @@ const VCMarkM = () => (
 // === Nav + Drawer ===
 function MNav({ lang, setLang, onBook }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const t = window.VC_I18N[lang];
 
   const close = () => setOpen(false);
@@ -49,9 +50,16 @@ function MNav({ lang, setLang, onBook }) {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
-      <nav className="m-nav">
+      <nav className={`m-nav ${scrolled || open ? "is-scrolled" : ""}`}>
         <a href="#top" className="m-nav__brand" onClick={close}>
           <VCMarkM />
           <span><em>Villa</em> Cortese</span>
@@ -203,12 +211,11 @@ function MRooms({ lang }) {
         {t.list.map((r, i) => (
           <div className="m-room-card" key={i}>
             <div className="m-room-card__img">
-              <img src={imgs[i]} alt={r.name_a} />
+              <img src={imgs[i]} alt={r.type} />
               <div className="m-room-card__num">— 0{i+1} —</div>
             </div>
             <div className="m-room-card__meta">
-              <h3 className="m-room-card__name"><em>{r.name_a}</em></h3>
-              <span className="m-room-card__type">{r.type}</span>
+              <h3 className="m-room-card__name">{r.type}</h3>
             </div>
             <p className="m-room-card__desc">{r.desc}</p>
             <div className="m-room-card__feat">
@@ -624,7 +631,9 @@ function MBookingModal({ lang, open, onClose }) {
                   <label>{t.room}</label>
                   <select value={data.room} onChange={upd("room")}>
                     <option value="any">{t.any}</option>
-                    <option>Iris</option><option>Pizzo</option><option>Cortese</option>
+                    {window.VC_I18N[lang].rooms.list.map((r, i) => (
+                      <option key={i} value={r.type}>{r.type}</option>
+                    ))}
                   </select>
                 </div>
               </div>

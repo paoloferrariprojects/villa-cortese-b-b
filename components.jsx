@@ -44,8 +44,15 @@ const VCMark = () => (
 // === Top navigation bar ===
 function Nav({ lang, setLang, onBook }) {
   const t = window.VC_I18N[lang];
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <nav className="nav">
+    <nav className={`nav ${scrolled ? "is-scrolled" : ""}`}>
       <a href="#top" className="nav__brand">
         <span className="vc-mark">
           <VCMark />
@@ -198,12 +205,11 @@ function Rooms({ lang }) {
           {t.list.map((r, i) => (
             <div className="room" key={i}>
               <div className="room__img reveal-img">
-                <img src={imgs[i]} alt={r.name_a} />
+                <img src={imgs[i]} alt={r.type} />
                 <div className="room__num">— 0{i + 1} —</div>
               </div>
               <div className="room__meta">
-                <h3 className="room__name"><em>{r.name_a}</em></h3>
-                <span className="room__type">{r.type}</span>
+                <h3 className="room__name">{r.type}</h3>
               </div>
               <p className="room__desc">{r.desc}</p>
               <div className="room__feat">
@@ -708,9 +714,9 @@ function BookingBand({ lang, onBook, formState, setFormState }) {
             <span className="bf__label">{t.room}</span>
             <select className="bf__value" value={formState.room} onChange={(e) => setFormState({ ...formState, room: e.target.value })}>
               <option value="any">{t.any}</option>
-              <option>Iris</option>
-              <option>Pizzo</option>
-              <option>Cortese</option>
+              {window.VC_I18N[lang].rooms.list.map((r, i) => (
+                <option key={i} value={r.type}>{r.type}</option>
+              ))}
             </select>
           </div>
           <button className="bf__cta" type="submit">{t.submit} →</button>
@@ -793,9 +799,9 @@ function BookingModal({ lang, open, onClose, formState }) {
                   <label>{t.room}</label>
                   <select defaultValue={formState.room}>
                     <option value="any">{t.any}</option>
-                    <option>Iris</option>
-                    <option>Pizzo</option>
-                    <option>Cortese</option>
+                    {window.VC_I18N[lang].rooms.list.map((r, i) => (
+                      <option key={i} value={r.type}>{r.type}</option>
+                    ))}
                   </select>
                 </div>
               </div>
